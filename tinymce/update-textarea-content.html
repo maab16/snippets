@@ -5,7 +5,7 @@
 </head>
 <body>
 	<form method="post" action="somepage">
-	    <textarea name="content" style="width:100%">Here is TinyMCE default content</textarea>
+	    <textarea name="content" id="tinymce_content" style="width:100%">Here is TinyMCE default content</textarea>
 
 	    <input type="submit" name="update" id="update" value="Update">
 	</form>
@@ -22,8 +22,13 @@
 
 		$("#update").on("click", function(e){
 			e.preventDefault();
+			/*
+			 * You can select tinymce editor using id or name
+			 */
 			// Here content is the name of textarea
 		    var ed = tinyMCE.get('content');
+		    // Here tinymce_content is the id of textarea
+		    var ed = tinyMCE.get('tinymce_content');
 
 		    // Do you ajax call here, window.setTimeout fakes ajax call
 		    ed.setProgressState(1); // Show progress
