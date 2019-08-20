@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Update TinyMCE Content </title>
+</head>
+<body>
+	<form method="post" action="somepage">
+	    <textarea name="content" style="width:100%">Here is TinyMCE default content</textarea>
+
+	    <input type="submit" name="update" id="update" value="Update">
+	</form>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script src="tinymce.min.js"></script>
+	<script type="text/javascript">
+	
+
+	$(document).ready(function(){
+		tinymce.init({
+		    selector : "textarea",
+		    mode : "textareas",
+		});
+
+		$("#update").on("click", function(e){
+			e.preventDefault();
+			// Here content is the name of textarea
+		    var ed = tinyMCE.get('content');
+
+		    // Do you ajax call here, window.setTimeout fakes ajax call
+		    ed.setProgressState(1); // Show progress
+		    window.setTimeout(function() {
+		        ed.setProgressState(0); // Hide progress
+		        ed.setContent('Here is Updated TinyMCE conetnt');
+		    }, 3000);
+		});
+	});
+	</script>
+
+</body>
+</html>
